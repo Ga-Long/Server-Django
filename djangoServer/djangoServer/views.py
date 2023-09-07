@@ -28,18 +28,10 @@ def get_spectrogram(request):
         except Exception as e:
             # 그 외의 예외 처리
             print(f"An error occurred while opening {audio_path}: {e}")
-        # audio_file = request.FILES.get('audio_file')
-
-        # 스펙트로그램 이미지를 생성합니다.
-        # spectrogram = process_audio(audio_file)
-
-        # spectrogram = requests.post(url, files=audio_file)
 
         # 스펙트로그램 이미지를 응답으로 반환합니다.
         response = HttpResponse(spectrogram, content_type='image/jpeg')
         return response
-
-
 
 # POST 응답 처리
 from pydub import AudioSegment
@@ -65,7 +57,6 @@ def process_audio(request):
             print("POST")
             # POST 요청에서 이미지 파일을 가져옵니다.
             m4a_file = request.FILES['m4a']
-            # print("m4a_file : ", m4a_file)
 
             # 소리 + 묵음
             # load the audio files
