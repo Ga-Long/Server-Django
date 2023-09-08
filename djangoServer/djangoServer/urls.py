@@ -25,8 +25,9 @@ from django.conf.urls.static import static
 router = routers.DefaultRouter()
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+
     path('', include(router.urls)),
     path('process_audio/', views.process_audio, name='process_audio'),
-    path('get_spectrogram/', views.get_spectrogram, name='get_spectrogram'),
+
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
